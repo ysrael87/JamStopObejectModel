@@ -8,11 +8,12 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import PageClass.LoginUser;
+import PageClass.RegisterUser;
 
 public class PageObjectModel {
 	private WebDriver driver;
 	private String baseUrl;
-
+	
 	
 	@Before
 	public void SetUP() throws Exception{
@@ -24,18 +25,33 @@ public class PageObjectModel {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);}
 		
 	@Test
-	public void test() {
+	public void testLogin() {
 		driver.get(baseUrl);
+		
 		LoginUser.clickLoginIcon(driver);
 		LoginUser.fillEmail(driver, "ysraeltorres87@gmail.com");
 		LoginUser.fillPassword(driver, "Tester123");	
-		LoginUser.clickSubmitLoginIcon(driver);
-			
-		}
+		LoginUser.clickSubmitLoginIcon(driver);}
+		
+	@Test
+	public void testRegister() {
+		driver.get(baseUrl);
+		
+		RegisterUser.clickRegisterIcon(driver);
+		RegisterUser.clickUserTypeArtist(driver);
+		RegisterUser.fillUserFirstName(driver, "Ysrael");
+		RegisterUser.fillUserLastName(driver, "Torres");
+		RegisterUser.fillUserEmail(driver);
+		RegisterUser.fillPassword(driver);
+		RegisterUser.clicktAggrementBox(driver);
+		RegisterUser.submitRegistration(driver);
+		
+	}
 	
 	@After
 	public void tearDown() throws Exception{
-		
+		//driver.quit();
 	}
 			
 }
+
