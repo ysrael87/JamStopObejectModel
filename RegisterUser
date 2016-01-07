@@ -1,0 +1,68 @@
+package PageClass;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class RegisterUser {
+	
+	public static WebElement element = null;
+	
+	
+	public static void clickRegisterIcon(WebDriver driver){ 
+		driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/a[2]")).click();}
+	
+	public static void clickUserTypeArtist(WebDriver driver){ 
+		driver.findElement(By.id("user_type-0")).click();}
+
+	public static WebElement UserFirstName(WebDriver driver){
+		element = driver.findElement(By.id("user_first_name"));
+		return element;}
+	
+	public static void fillUserFirstName(WebDriver driver, String userFirstName){
+		element = UserFirstName(driver);
+		element.sendKeys(userFirstName);}
+	
+	public static WebElement UserLastName(WebDriver driver){
+		element = driver.findElement(By.id("user_last_name"));
+		return element;}
+	
+	public static void fillUserLastName(WebDriver driver, String userLastName){
+		element = UserLastName(driver);
+		element.sendKeys(userLastName);}
+	
+	
+	public static WebElement UserEmail(WebDriver driver){	
+		element = driver.findElement(By.id("user_email"));
+		return element;
+	}
+	
+
+	public static void fillUserEmail(WebDriver driver) {
+		element = UserEmail(driver);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+	    Calendar calendar = Calendar.getInstance();	
+        System.out.println(dateFormat.format(calendar.getTime()));
+        String RandomEmail = dateFormat.format(calendar.getTime());
+        driver.findElement(By.id("user_email")).sendKeys(RandomEmail + "@gmail.com");
+        return;
+	}
+	public static WebElement fillPassword(WebDriver driver){
+		driver.findElement(By.id("user_password"));
+		driver.findElement(By.id("user_password")).sendKeys("Tester123");
+		driver.findElement(By.id("user_rpassword"));
+		driver.findElement(By.id("user_rpassword")).sendKeys("Tester123");
+		return element;}
+	
+	public static void clicktAggrementBox(WebDriver driver){
+		driver.findElement(By.id("accept_aggrement")).click();}
+	
+	public static void submitRegistration(WebDriver driver){
+		driver.findElement(By.id("bttnsubmit")).click();}
+		
+
+	
+}
