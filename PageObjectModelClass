@@ -1,14 +1,15 @@
 package SeleniumPOM;
 
-import java.util.concurrent.TimeUnit;
-
+import PageClass.LoginUser;
+import PageClass.RegisterUser;
+import PageClass.StudioSignUp;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import PageClass.LoginUser;
-import PageClass.RegisterUser;
+
+import java.util.concurrent.TimeUnit;
 
 public class PageObjectModel {
 	private WebDriver driver;
@@ -16,7 +17,7 @@ public class PageObjectModel {
 	
 	
 	@Before
-	public void SetUP() throws Exception{
+	public void SetUP(){
 		driver = new FirefoxDriver();
 		baseUrl = "http://www.thejamstop.com";
 		
@@ -37,21 +38,71 @@ public class PageObjectModel {
 	public void testRegister() {
 		driver.get(baseUrl);
 		
-		RegisterUser.clickRegisterIcon(driver);
+		RegisterUser.clickSignUpIcon(driver);
 		RegisterUser.clickUserTypeArtist(driver);
 		RegisterUser.fillUserFirstName(driver, "Ysrael");
 		RegisterUser.fillUserLastName(driver, "Torres");
 		RegisterUser.fillUserEmail(driver);
 		RegisterUser.fillPassword(driver);
 		RegisterUser.clicktAggrementBox(driver);
-		RegisterUser.submitRegistration(driver);
+		RegisterUser.submitRegistration(driver);}
+		
+	
+	
+	@Test
+	public void testStudioSignUp() throws Exception {
+		driver.get(baseUrl);
+		
+		
+		//First Part of Studio SignUp
+		StudioSignUp.clickSignUp(driver);
+		StudioSignUp.clickStudioUser(driver);
+		StudioSignUp.genderCheckMale(driver);
+		StudioSignUp.filluserFirstName(driver);
+		StudioSignUp.userLastName(driver);
+		StudioSignUp.fillArtistEmail(driver);
+		StudioSignUp.fillPayPallEmail(driver);
+		StudioSignUp.fillUserPhone(driver);
+		StudioSignUp.fillAddress(driver);
+		StudioSignUp.fillPasswordl(driver);
+		StudioSignUp.reFillPassword(driver);
+		StudioSignUp.clickAcceptAgreement(driver);
+		StudioSignUp.clickSubmitt(driver);
+		
+		
+		//Second part
+		StudioSignUp.fillStudioTitle(driver);
+		StudioSignUp.fillStudioAddress(driver);
+		StudioSignUp.fillStudioDescription(driver);
+		StudioSignUp.fillStudioMonthRate(driver);
+		StudioSignUp.fillStudioDayRate(driver);
+		StudioSignUp.fillStudioHoursRate(driver);
+		StudioSignUp.sellectStudioCapacity(driver);
+		StudioSignUp.sellectStudioAdultLimit(driver);
+		StudioSignUp.selectStudioAvailebleTo(driver);
+		StudioSignUp.clickDone(driver);
+		
+		//Third
+		StudioSignUp.clickDone(driver);
+		
+		//Four
+		Thread.sleep(3000);
+		StudioSignUp.clickBrowseForStudioImage(driver);
+		Thread.sleep(3000);
+		StudioSignUp.addStudioImage(driver);
+		StudioSignUp.clickGallarySubmit(driver);
+		StudioSignUp.clickSoundSubmit(driver);
+		StudioSignUp.clickSaveInformation(driver);
+		
+		
 		
 	}
 	
 	@After
-	public void tearDown() throws Exception{
-		//driver.quit();
+	public void tearDown() {
+		driver.quit();
 	}
 			
 }
+
 
