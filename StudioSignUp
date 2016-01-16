@@ -1,0 +1,215 @@
+package PageClass;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class StudioSignUp {
+
+	public static WebElement element = null;
+	
+	public static void clickSignUp(WebDriver driver){
+		driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/a[2]")).click();}
+	
+	public static void clickStudioUser(WebDriver driver){
+		driver.findElement(By.id("user_type-1")).click();}
+	
+	public static void genderCheckMale(WebDriver driver){
+		new Select(driver.findElement(By.id("user_gender"))).selectByVisibleText("Male");}
+
+	
+	
+	public static WebElement userFirstName(WebDriver driver){
+		driver.findElement(By.id("user_first_name"));
+		return element;}
+	
+	
+	public static WebElement filluserFirstName(WebDriver driver){
+		driver.findElement(By.id("user_first_name")).sendKeys("Iz");
+		return element;}
+	
+	
+	
+	public static WebElement userLastName(WebDriver driver){
+		driver.findElement(By.id("user_last_name"));
+		driver.findElement(By.id("user_last_name")).sendKeys("To");
+		return element;}
+	
+	public static WebElement ArtistEmail(WebDriver driver){	
+		element = driver.findElement(By.id("user_email"));
+		return element;}
+	
+	public static void fillArtistEmail(WebDriver driver) {
+		element = ArtistEmail(driver);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+	    Calendar calendar = Calendar.getInstance();	
+        System.out.println(dateFormat.format(calendar.getTime()));
+        String RandomEmail = dateFormat.format(calendar.getTime());
+        driver.findElement(By.id("user_email")).sendKeys(RandomEmail + "@gmail.com");
+        return;}
+	
+	public static WebElement payPalEmail(WebDriver driver){	
+		driver.findElement(By.id("user_paypal_email"));
+		return element;}
+	
+	public static void fillPayPallEmail(WebDriver driver){
+		
+		element = payPalEmail(driver);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+	    Calendar calendar = Calendar.getInstance();	
+        System.out.println(dateFormat.format(calendar.getTime()));
+        String RandomEmail = dateFormat.format(calendar.getTime());
+		driver.findElement(By.id("user_paypal_email")).sendKeys(RandomEmail + "@gmail.com");
+		return;}
+	
+	public static WebElement fillUserPhone(WebDriver driver){
+		driver.findElement(By.id("user_phone"));
+		driver.findElement(By.id("user_phone")).sendKeys("12345678910");
+		return element;}
+	
+	public static WebElement fillAddress(WebDriver driver){
+		driver.findElement(By.id("address"));
+		driver.findElement(By.id("address")).sendKeys("wieisa wes 10 st");
+		return element;}
+	
+	public static WebElement fillPasswordl(WebDriver driver){
+		driver.findElement(By.id("user_password"));
+		driver.findElement(By.id("user_password")).sendKeys("Tester123");
+		return element;}
+	
+	public static WebElement reFillPassword(WebDriver driver){
+		driver.findElement(By.id("user_rpassword"));
+		driver.findElement(By.id("user_rpassword")).sendKeys("Tester123");
+		return element;}
+	
+	public static void clickAcceptAgreement(WebDriver driver){
+		driver.findElement(By.id("accept_aggrement")).click();}
+	
+	public static void clickSubmitt(WebDriver driver){
+	  driver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div/form/div[1]/div/div[13]/input")).click();
+  	System.out.println("Submit click succesfull");}
+	
+	
+	public static WebElement UserFirstName(WebDriver driver){
+		element = driver.findElement(By.id("user_first_name"));
+		return element;}
+	
+	public static void fillUserFirstName(WebDriver driver, String userFirstName){
+		element = UserFirstName(driver);
+		element.sendKeys(userFirstName);}
+	
+	public static WebElement UserLastName(WebDriver driver){
+		element = driver.findElement(By.id("user_last_name"));
+		return element;}
+	
+	public static void fillUserLastName(WebDriver driver, String userLastName){
+		element = UserLastName(driver);
+		element.sendKeys(userLastName);}
+	
+	
+	public static WebElement UserEmail(WebDriver driver){	
+		element = driver.findElement(By.id("user_email"));
+		return element;
+	}
+	
+
+	public static void fillUserEmail(WebDriver driver) {
+		element = UserEmail(driver);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+	    Calendar calendar = Calendar.getInstance();	
+        System.out.println(dateFormat.format(calendar.getTime()));
+        String RandomEmail = dateFormat.format(calendar.getTime());
+        driver.findElement(By.id("user_email")).sendKeys(RandomEmail + "@gmail.com");
+        return;
+	}
+	public static WebElement fillPassword(WebDriver driver){
+		driver.findElement(By.id("user_password"));
+		driver.findElement(By.id("user_password")).sendKeys("Tester123");
+		driver.findElement(By.id("user_rpassword"));
+		driver.findElement(By.id("user_rpassword")).sendKeys("Tester123");
+		return element;}
+	
+	public static void clicktAggrementBox(WebDriver driver){
+		driver.findElement(By.id("accept_aggrement")).click();}
+	
+	public static void submitRegistration(WebDriver driver){
+		driver.findElement(By.id("bttnsubmit")).click();}
+		
+	
+  public static void closeBox(WebDriver driver){
+		((WebElement) driver.findElements(By.cssSelector(".close.data-dismiss.alert.type.button"))).click();
+		
+	}
+	
+	public static WebElement fillStudioTitle(WebDriver driver){
+		driver.findElement(By.cssSelector("input#studio_title")).sendKeys("The Big Jam");
+		System.out.println("fill studio title succesfull ");
+		return element;}
+	
+	public static WebElement fillStudioAddress(WebDriver driver){
+		driver.findElement(By.id("studio_address"));
+		driver.findElement(By.id("studio_address")).sendKeys("New York, NY, United States");
+		return element;}
+	
+		
+	public static WebElement fillStudioDescription(WebDriver driver){
+		driver.findElement(By.id("studio_description")).clear();
+		driver.findElement(By.id("studio_description")).sendKeys("THIS STUDIO CANT BE BEAT");
+		return element;}
+	
+	
+	public static WebElement fillStudioMonthRate(WebDriver driver){
+		driver.findElement(By.id("studio_month_rate"));
+		driver.findElement(By.id("studio_month_rate")).sendKeys("200");
+		return element;}
+	
+	public static WebElement fillStudioDayRate(WebDriver driver){
+		driver.findElement(By.id("studio_day_rate"));
+		driver.findElement(By.id("studio_day_rate")).sendKeys("10");
+		return element;}
+	
+	public static WebElement fillStudioHoursRate(WebDriver driver){
+		driver.findElement(By.id("studio_hours_rate")).clear();
+		driver.findElement(By.id("studio_hours_rate")).sendKeys("5");
+		return element;}
+	
+	public static WebElement sellectStudioCapacity(WebDriver driver){
+		new Select(driver.findElement(By.id("studio_capacity"))).selectByVisibleText("8");
+		return element;}
+	
+	public static WebElement sellectStudioAdultLimit(WebDriver driver){
+		new Select(driver.findElement(By.id("studio_adult_limit"))).selectByVisibleText("10");
+		return element;}
+	
+	public static WebElement selectStudioAvailebleTo(WebDriver driver){
+		new Select(driver.findElement(By.id("studio_available_to"))).selectByVisibleText("Saturday");
+		return element;}
+
+	public static void clickDone(WebDriver driver){
+		driver.findElement(By.cssSelector("input.btn.btn-success")).click();}
+	
+	public static void clickBrowseForStudioImage(WebDriver driver){
+	driver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div/form/div[1]/div/div[1]/a/input")).click();}
+	
+	public static WebElement addStudioImage(WebDriver driver ){
+		driver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div/form/div[1]/div/div[1]/a/input"));
+		driver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div/form/div[1]/div/div[1]/a/input")).sendKeys("/Users/Ysrael/Downloads/FB_IMG_1446911745737.jpg");
+		return element;
+	}
+	public static void clickGallarySubmit(WebDriver driver){
+		driver.findElement(By.id("gallary-submit")).click();}
+	
+	public static void clickSoundSubmit(WebDriver driver){
+		driver.findElement(By.id("sound-submit")).click();}
+	
+	public static void clickSaveInformation(WebDriver driver){
+		driver.findElement(By.xpath("//a[contains(text(),'Save Information')]")).click();
+	}
+
+
+}
